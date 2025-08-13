@@ -22,20 +22,58 @@ import ReactDOM from 'react-dom/client'
 // }
 
 //  Nest Components
-function Greeting() {
+// function Greeting() {
+//   return (
+//     <div>
+//       <Person />
+//       <Message />
+//     </div>
+//   )
+// }
+
+// const Person = () => <h2>john doe</h2>
+// const Message = () => {
+//   return <p>this is my message</p>
+// }
+
+// const root = ReactDOM.createRoot(document.getElementById('root'))
+
+// root.render(<Greeting />)
+
+// Booklist
+
+const BookList = () => {
   return (
-    <div>
-      <Person />
-      <Message />
-    </div>
+    <section>
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+    </section>
   )
 }
 
-const Person = () => <h2>john doe</h2>
-const Message = () => {
-  return <p>this is my message</p>
+const Book = () => {
+  return (
+    <article>
+      <Image />
+      <Title />
+      <Author />
+    </article>
+  )
+}
+
+const Image = () => (
+  <img
+    src="https://images-na.ssl-images-amazon.com/images/I/91ZVf3kNrcL._AC_UL600_SR600,400_.jpg"
+    alt="The Let Them Theory"
+  />
+)
+const Title = () => <h2>The Let Them Theory</h2>
+const Author = () => {
+  return <h4>Mel Robbins &amp; Sawyer Robbins</h4>
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(<Greeting />)
+root.render(<BookList />)
