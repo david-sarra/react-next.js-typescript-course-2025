@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
+import './index.css'
+
 //Section 3: React Fundamentals
 
 // JSX Rules
@@ -44,7 +46,7 @@ import ReactDOM from 'react-dom/client'
 
 const BookList = () => {
   return (
-    <section>
+    <section className="booklist">
       <Book />
       <Book />
       <Book />
@@ -52,27 +54,42 @@ const BookList = () => {
     </section>
   )
 }
-
+const author = 'Mel Robbins &amp; Sawyer Robbins'
 const Book = () => {
+  const title = 'The Let Them Theory'
   return (
-    <article>
-      <Image />
-      <Title />
-      <Author />
-    </article>
+    <artcicle className="book">
+      <img src="./images/let_them_theory.jpg" alt="The Let Them Theory" />
+      <h2>{title}</h2>
+      <h4>{author.toUpperCase()}</h4>
+    </artcicle>
   )
 }
 
-const Image = () => (
-  <img
-    src="https://images-na.ssl-images-amazon.com/images/I/91ZVf3kNrcL._AC_UL600_SR600,400_.jpg"
-    alt="The Let Them Theory"
-  />
-)
-const Title = () => <h2>The Let Them Theory</h2>
-const Author = () => {
-  return <h4>Mel Robbins &amp; Sawyer Robbins</h4>
-}
+// Factored elements outside objects (?)
+
+// const Book = () => {
+//   return (
+//     <article className="book">
+//       <Image />
+//       <Title />
+//       <Author />
+//     </article>
+//   )
+// }
+
+// const Image = () => (
+//   <img src="./images/let_them_theory.jpg" alt="The Let Them Theory" />
+// )
+// const Title = () => <h2>The Let Them Theory</h2>
+// const Author = () => {
+//   const inlineHeadingStyles = {
+//     color: '#617d98',
+//     fontSize: '0.75rem',
+//     marginTop: '0.5rem',
+//   }
+//   return <h4 style={inlineHeadingStyles}>Mel Robbins &amp; Sawyer Robbins</h4>
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
