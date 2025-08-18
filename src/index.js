@@ -42,31 +42,19 @@ import './index.css'
 
 // root.render(<Greeting />)
 
-// Booklist
+// const author = 'Mel Robbins &amp; Sawyer Robbins'
+// const Book = () => {
+//   const title = 'The Let Them Theory'
+//   return (
+//     <article className="book">
+//       <img src="./images/let_them_theory.jpg" alt="The Let Them Theory" />
+//       <h2>{title}</h2>
+//       <h4>{author.toUpperCase()}</h4>
+//     </article>
+//   )
+// }
 
-const BookList = () => {
-  return (
-    <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-    </section>
-  )
-}
-const author = 'Mel Robbins &amp; Sawyer Robbins'
-const Book = () => {
-  const title = 'The Let Them Theory'
-  return (
-    <artcicle className="book">
-      <img src="./images/let_them_theory.jpg" alt="The Let Them Theory" />
-      <h2>{title}</h2>
-      <h4>{author.toUpperCase()}</h4>
-    </artcicle>
-  )
-}
-
-// Factored elements outside objects (?)
+//Factored elements outside objects
 
 // const Book = () => {
 //   return (
@@ -90,6 +78,58 @@ const Book = () => {
 //   }
 //   return <h4 style={inlineHeadingStyles}>Mel Robbins &amp; Sawyer Robbins</h4>
 // }
+
+// Props
+
+const firstBook = {
+  author: 'Mel Robbins &amp; Sawyer Robbins',
+  title: 'The Let Them Theory',
+  img: './images/let_them_theory.jpg',
+}
+
+const secondBook = {
+  author: 'Joël Dicker',
+  title: 'La muy catastrófica visita al zoo',
+  img: 'https://m.media-amazon.com/images/I/614Wp+ltIjL._SY342_.jpg',
+}
+
+const BookList = () => {
+  return (
+    <section className="booklist">
+      <Book
+        author={firstBook.author}
+        title={firstBook.title}
+        img={firstBook.img}
+      >
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque odit,
+          aut alias maiores voluptate deserunt non totam nulla fugiat eaque,
+          soluta cum cupiditate impedit optio aliquam nostrum ex repudiandae
+          nisi?
+        </p>
+        <button>click me</button>
+      </Book>
+      <Book
+        author={secondBook.author}
+        title={secondBook.title}
+        img={secondBook.img}
+      />
+    </section>
+  )
+}
+
+const Book = (props) => {
+  const { img, title, author, children } = props
+  console.log(props)
+  return (
+    <article className="book">
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
+      {children}
+    </article>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
