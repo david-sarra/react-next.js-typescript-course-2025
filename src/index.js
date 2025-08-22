@@ -145,20 +145,20 @@ import './index.css'
 // Simple List
 /////
 
-const books = [
-  {
-    author: 'Mel Robbins &amp; Sawyer Robbins',
-    title: 'The Let Them Theory',
-    img: './images/let_them_theory.jpg',
-    id: 1,
-  },
-  {
-    author: 'Joël Dicker',
-    title: 'La muy catastrófica visita al zoo',
-    img: 'https://m.media-amazon.com/images/I/614Wp+ltIjL._SY342_.jpg',
-    id: 2,
-  },
-]
+// const books = [
+//   {
+//     author: 'Mel Robbins &amp; Sawyer Robbins',
+//     title: 'The Let Them Theory',
+//     img: './images/let_them_theory.jpg',
+//     id: 1,
+//   },
+//   {
+//     author: 'Joël Dicker',
+//     title: 'La muy catastrófica visita al zoo',
+//     img: 'https://m.media-amazon.com/images/I/614Wp+ltIjL._SY342_.jpg',
+//     id: 2,
+//   },
+// ]
 
 //////
 // Basic Events
@@ -203,33 +203,50 @@ const books = [
 // Prop Drilling
 //////
 
+// const BookList = () => {
+//   const getBook = (id) => {
+//     const book = books.find((book) => book.id === id)
+//     console.log(book)
+//   }
+//   return (
+//     <section className="booklist">
+//       {books.map((book) => {
+//         return <Book {...book} key={book.id} getBook={getBook} />
+//       })}
+//     </section>
+//   )
+// }
+
+// const Book = (props) => {
+//   const { img, title, author, getBook, id } = props
+//   // console.log(props)
+//   const getSingleBook = () => {
+//     getBook(id)
+//   }
+//   return (
+//     <article className="book">
+//       <img src={img} alt={title} />
+//       <h2>{title}</h2>
+//       <button onClick={getSingleBook}> click me </button>
+//       <h4>{author}</h4>
+//     </article>
+//   )
+// }
+
+//////
+// EO6
+//////
+
+import { books } from './books'
+import Book from './Book'
+
 const BookList = () => {
-  const getBook = (id) => {
-    const book = books.find((book) => book.id === id)
-    console.log(book)
-  }
   return (
     <section className="booklist">
       {books.map((book) => {
-        return <Book {...book} key={book.id} getBook={getBook} />
+        return <Book {...book} key={book.id} />
       })}
     </section>
-  )
-}
-
-const Book = (props) => {
-  const { img, title, author, getBook, id } = props
-  // console.log(props)
-  const getSingleBook = () => {
-    getBook(id)
-  }
-  return (
-    <article className="book">
-      <img src={img} alt={title} />
-      <h2>{title}</h2>
-      <button onClick={getSingleBook}> click me </button>
-      <h4>{author}</h4>
-    </article>
   )
 }
 
