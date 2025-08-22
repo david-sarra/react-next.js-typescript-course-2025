@@ -160,65 +160,74 @@ const books = [
   },
 ]
 
+//////
 // Basic Events
+//////
 
-const EventExamples = () => {
-  // EVENT REFERENCES
-  //   const handleFormInput = (e) => {
-  //     console.log(e.target)
-  //     console.log(e.target.name)
-  //     console.log(e.target.value)
-  //   }
-  //   const handleButtonClick = () => {
-  //     alert('handle button click')
-  //   }
-  //   const handleFormSubmission = (e) => {
-  //     e.preventDefault()
-  //     console.log('form submitted')
-  //   }
-  return (
-    <section>
-      <form>
-        <h2>Typical Form</h2>
-        <input
-          type="text"
-          name="product"
-          onChange={(e) => console.log(e.target.value)}
-          style={{ margin: '1rem 0' }}
-        />
-        <button type="submit">Submit</button>
-        <div>
-          <button onClick={() => console.log('click me')} type="button">
-            click me
-          </button>
-        </div>
-      </form>
-    </section>
-  )
-}
+// const EventExamples = () => {
+// EVENT REFERENCES
+//   const handleFormInput = (e) => {
+//     console.log(e.target)
+//     console.log(e.target.name)
+//     console.log(e.target.value)
+//   }
+//   const handleButtonClick = () => {
+//     alert('handle button click')
+//   }
+//   const handleFormSubmission = (e) => {
+//     e.preventDefault()
+//     console.log('form submitted')
+//   }
+//   return (
+//     <section>
+//       <form>
+//         <h2>Typical Form</h2>
+//         <input
+//           type="text"
+//           name="product"
+//           onChange={(e) => console.log(e.target.value)}
+//           style={{ margin: '1rem 0' }}
+//         />
+//         <button type="submit">Submit</button>
+//         <div>
+//           <button onClick={() => console.log('click me')} type="button">
+//             click me
+//           </button>
+//         </div>
+//       </form>
+//     </section>
+//   )
+// }
+
+//////
+// Prop Drilling
+//////
 
 const BookList = () => {
+  const getBook = (id) => {
+    const book = books.find((book) => book.id === id)
+    console.log(book)
+  }
   return (
     <section className="booklist">
-      <EventExamples />
       {books.map((book) => {
-        return <Book {...book} key={book.id} />
+        return <Book {...book} key={book.id} getBook={getBook} />
       })}
     </section>
   )
 }
 
 const Book = (props) => {
-  const { img, title, author } = props
-  const displayTitle = () => {
-    console.log(title)
+  const { img, title, author, getBook, id } = props
+  // console.log(props)
+  const getSingleBook = () => {
+    getBook(id)
   }
-  //console.log(props)
   return (
     <article className="book">
       <img src={img} alt={title} />
       <h2>{title}</h2>
-      <button onClick={displayTitle}>display title</button>
+      <button onClick={getSingleBook}> click me </button>
       <h4>{author}</h4>
     </article>
   )
