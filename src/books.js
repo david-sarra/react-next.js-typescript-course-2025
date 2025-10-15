@@ -4,7 +4,7 @@ import img3 from './images/book-3.jpg'
 
 export const books = [
   {
-    author: 'Mel Robbins &amp; Sawyer Robbins',
+    author: 'Mel Robbins & Sawyer Robbins',
     title: 'The Let Them Theory',
     img: img1,
     id: 1,
