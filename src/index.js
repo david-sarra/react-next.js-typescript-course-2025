@@ -22,32 +22,57 @@ const campings = [
 function CampingList() {
   return (
     <section className="campinglist">
-      <EventExamples/>
+      <EventExamples />
       {campings.map((camping) => {
-        
-        return (
-          <Camping {...camping} key={camping.id}/>
-        );
+        return <Camping {...camping} key={camping.id} />;
       })}
-    </section>);
+    </section>
+  );
 }
 
 const EventExamples = () => {
-  return <section>
-    <form>
-      <h2>Typical Form</h2>>
-        <input type="text" style={{ margin: '1rem 0' }} />
-        </form>;
-  </section>;
-}
+  const handleFormInput = (e) => {
+    //console.log(e);
+    console.log(e.target);
+    console.log(e.target.value);
+    console.log(e.target.name);
+    console.log("Form input handled");
+  };
+  // const handleButtonClick = () => {
+  //   alert("handle button click");
+  // };
+  // const handleFormSubmission = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted");
+  // };
+  return (
+    <section>
+      <form>
+        <h2>Check availability</h2>
+        <input
+          type="text"
+          name="example"
+          onChange={(e) => console.log(e.target.value)}
+          style={{ margin: "1rem 0" }}
+        />
+      </form>
+      <button onClick={() => console.log("hello there")} type="button">
+        Book now
+      </button>
+    </section>
+  );
+};
 
 const Camping = (props) => {
   const { name, location, img } = props;
-  console.log(props);
+  const displayName = () => {
+    console.log(name);
+  };
   return (
     <article className="camping">
       <img src={img} alts={name} />
       <h2>{name}</h2>
+      <button onClick={displayName}>display name</button>
       <h4>{location}</h4>
     </article>
   );
